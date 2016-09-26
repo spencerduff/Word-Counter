@@ -1,0 +1,8 @@
+*.tlog
+Debug/Test.obj
+*.idb
+Debug/vc120.pdb
+*.log
+Debug/WordCounter.obj
+*.vcxproj
+Word Counter.vcxproj.filters
