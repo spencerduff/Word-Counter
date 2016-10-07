@@ -28,6 +28,14 @@ int main(){
 
 	wordCounters[0].printWords(num);
 
+	std::cout << "What is the name of the file you would like to print the results to? " << std::endl;
+	std::string a;
+	std::cin >> a;
+
+	std::ofstream fout(a);
+
+	wordCounters[0].printToFile(fout);
+
 	std::cout << "Would you like to read a poem based on this dictionary?" << std::endl;
 	
 	char choice;

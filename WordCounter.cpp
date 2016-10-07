@@ -53,7 +53,7 @@ void WordCounter::readInWords(std::wstring file){
 
 
 void WordCounter::removeDelimiters(std::string &s){
-	char toRemove[] = "'/!.,\"?-():\\;{}[] ";
+	char toRemove[] = "'/!.,\"?-():\\;{}[]’ ";
 	char c;
 	int i = 0;
 	while (s[i])
@@ -150,6 +150,18 @@ void WordCounter::printWords(int toOut){
 	std::cout << "_____________________________________\n";
 	for (unsigned int i = words.size() - 1; toOut > 0 && i > 0; --i, --toOut){
 		std::cout << words[i].freq << " " << words[i].word << std::endl;
+	}
+}
+
+void WordCounter::printToFile(std::ofstream &fout){
+	unsigned int totWords = (unsigned)addAllFreq();
+
+	fout << "Number of unique words: " << words.size() << std::endl;
+	fout << "Number of total words: " << totWords << std::endl;
+	fout << "Ratio of unique words: " << (double)words.size() / (double)totWords << std::endl;
+	fout << "_____________________________________\n";
+	for (unsigned int i = words.size() - 1; i > 0; --i){
+		fout << words[i].freq << " " << words[i].word << std::endl;
 	}
 }
 

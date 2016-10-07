@@ -51,6 +51,8 @@ public:
 
 	void generateSong();
 
+	void printToFile(std::ofstream &fout);
+
 
 private:
 	std::vector<WordNode> words;
