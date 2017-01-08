@@ -3,7 +3,10 @@
 #include <fstream>
 #include <time.h>
 
+#include <vld.h>
+
 std::vector<std::wstring> getFileNames();
+
 
 // Add a song generator.
 

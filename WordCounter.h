@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <random>
 
 struct WordNode{
 	std::string word;
@@ -47,27 +48,37 @@ public:
 
 	void printWords(int toOut);
 
-	WordCounter operator+=(WordCounter other);
+	WordCounter operator+=(WordCounter &other);
 
 	void generateSong();
+
+	void generateNTupleSong();
 
 	void printToFile(std::ofstream &fout);
 
 
 private:
 	std::vector<WordNode> words;
+	std::vector<WordNode> twoTuple;
 	std::vector<std::string> nonuniques;
+	std::vector<std::string> twoTupleNonUniques;
+
+	int avgSentenceLength;
+	int smallestSentenceLength;
+	int largestSentenceLength;
+	int medianSentenceLength;
+	int numOfSentences;
 
 	void readInWords(std::wstring file);
-	void readInWords(WordCounter otherWC);
+	void readInWords(WordCounter &otherWC);
 
 	void removeDelimiters(std::string &s);
-
-	int binaryFind(int first, int last, const WordNode &value, bool &exactPos);
-	void sortByFreq();
-	void sortByWord();
+	void calcSentenceStats(std::vector<int> &v);
 
 	int addAllFreq();
+
+	int randomizeSentenceNumber();
+	int randomizeSentenceLength();
 
 	WordCounter();
 	WordCounter(std::vector<WordNode> &w);
